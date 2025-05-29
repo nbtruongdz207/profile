@@ -8,23 +8,119 @@
   </head>
 
   <body>
-    <a href="./index.html"> trang chủ</a> <br />
-
-    <a href="more-info/my-skill.html"> Kĩ năng của taoo</a><br />
-    <a href="more-info/qr.html"> mã qr </a> <br />
-    ><br />
-
     <!-- 3. Điều hướng đến my-skill.html -->
 
     <h1>Welcome to My Website!</h1>
+    <a href="./index.html"> trang chủ</a> <br />
+    <a href="more-info/my-skill.html"> Kĩ năng của ta</a><br />
+    <a href="more-info/qr.html"> mã qr </a> <br />
     <hr />
-    <h2>Nguyễn Bùi Trường - tuy anh không có gì nhưng anh <i>có em</i></h2>
+    <h2>Nguyễn Bùi Trường - tuy anh không có gì nhưng anh <i>'có em'</i></h2>
     <p>Creative Director and Designer - Giám đốc sáng tạo và nhà thiết kế</p>
     <hr />
-
     <a href="./more-info/contact.html"
       ><img src="./assets/images/anhh.jpg" alt=""
     /></a>
+    <!-- Popup giao diện -->
+    <div
+      id="popup"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(2, 2, 2, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      "
+    >
+      <div
+        style="
+          background-color: white;
+          padding: 30px;
+          border-radius: 15px;
+          text-align: center;
+          box-shadow: 0 0 20px rgba(7, 7, 7, 0.3);
+          animation: fadeIn 1s ease;
+        "
+      >
+        <!-- LOGO -->
+        <img
+          src="./assets/images/logo.jpg"
+          alt="Logo"
+          style="width: 100px; margin-bottom: 20px"
+        />
+
+        <h2>Chào mừng bạn đến với website!</h2>
+        <p>Bấm để bắt đầu trải nghiệm âm nhạc 🎵</p>
+        <button
+          onclick="startExperience()"
+          style="
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #00eeff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          "
+        >
+          Bắt đầu
+        </button>
+      </div>
+    </div>
+
+    <!-- Nhạc -->
+    <audio id="mymusic">
+      <source src="./music/bonghoadepnhat.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- CSS animation -->
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+      }
+    </style>
+
+    <!-- Script -->
+    <script>
+      function startExperience() {
+        const popup = document.getElementById("popup");
+        const music = document.getElementById("mymusic");
+
+        // Phát nhạc
+        music.play().catch((err) => {
+          console.error("Không thể phát nhạc:", err);
+        });
+
+        // Hiệu ứng biến mất
+        popup.style.animation = "fadeOut 0.5s ease";
+        setTimeout(() => {
+          popup.style.display = "none";
+        }, 500);
+      }
+    </script>
 
     <h2>About me</h2>
     <a href="more-info/contact.html">Liên Hệ tôi</a><br />
